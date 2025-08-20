@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'IRANSans';
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/common/fonts/IRANSansWebFaNum_UltraLight.woff2') format('woff2'),
+    url('/common/fonts/IRANSansWebFaNum_UltraLight.woff') format('woff'),
+    url('/common/fonts/IRANSansFaNum_UltraLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/common/fonts/IRANSansWebFaNum_Light.woff2') format('woff2'),
+    url('/common/fonts/IRANSansWebFaNum_Light.woff') format('woff'),
+    url('/common/fonts/IRANSansFaNum_Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/common/fonts/IRANSansWebFaNum_Medium.woff2') format('woff2'),
+    url('/common/fonts/IRANSansWebFaNum_Medium.woff') format('woff'),
+    url('/common/fonts/IRANSansFaNum_Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/common/fonts/IRANSansWebFaNum_Bold.woff2') format('woff2'),
+    url('/common/fonts/IRANSansWebFaNum_Bold.woff') format('woff'),
+    url('/common/fonts/IRANSansFaNum_Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/common/fonts/IRANSansWebFaNum_Black.woff2') format('woff2'),
+    url('/common/fonts/IRANSansWebFaNum_Black.woff') format('woff'),
+    url('/common/fonts/IRANSansFaNum_Black.ttf') format('truetype');
+}
