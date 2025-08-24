@@ -22,7 +22,7 @@ function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimiti
 }
 
 function TooltipContent({
-  className,
+  className: className,
   sideOffset = 0,
   children,
   ...props

@@ -18,7 +18,7 @@ function SelectValue({ ...props }: React.ComponentProps<typeof SelectPrimitive.V
 }
 
 function SelectTrigger({
-  className,
+  className: className,
   size = 'default',
   children,
   ...props
@@ -44,7 +44,7 @@ function SelectTrigger({
 }
 
 function SelectContent({
-  className,
+  className: className,
   children,
   position = 'popper',
   ...props
@@ -78,7 +78,7 @@ function SelectContent({
   );
 }
 
-function SelectLabel({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Label>) {
+function SelectLabel({ className: className, ...props }: React.ComponentProps<typeof SelectPrimitive.Label>) {
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
@@ -89,7 +89,7 @@ function SelectLabel({ className, ...props }: React.ComponentProps<typeof Select
 }
 
 function SelectItem({
-  className,
+  className: className,
   children,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Item> & {
@@ -116,7 +116,7 @@ function SelectItem({
   );
 }
 
-function SelectSeparator({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Separator>) {
+function SelectSeparator({ className: className, ...props }: React.ComponentProps<typeof SelectPrimitive.Separator>) {
   return (
     <SelectPrimitive.Separator
       data-slot="select-separator"
@@ -126,7 +126,10 @@ function SelectSeparator({ className, ...props }: React.ComponentProps<typeof Se
   );
 }
 
-function SelectScrollUpButton({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
+function SelectScrollUpButton({
+  className: className,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
   return (
     <SelectPrimitive.ScrollUpButton
       data-slot="select-scroll-up-button"
@@ -139,7 +142,7 @@ function SelectScrollUpButton({ className, ...props }: React.ComponentProps<type
 }
 
 function SelectScrollDownButton({
-  className,
+  className: className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
   return (

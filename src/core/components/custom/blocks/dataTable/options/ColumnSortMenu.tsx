@@ -23,7 +23,7 @@ interface ColumnSortMenuProps<TData, TValue> extends React.HTMLAttributes<HTMLDi
 export function ColumnSortMenu<TData, TValue>({
   column: { getCanSort, getIsSorted, toggleSorting, clearSorting },
   title,
-  className,
+  className: className,
 }: ColumnSortMenuProps<TData, TValue>) {
   if (!getCanSort) {
     return <div className={className}>{title}</div>;

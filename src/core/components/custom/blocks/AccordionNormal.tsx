@@ -91,7 +91,9 @@ export default function AccordionNormal({ items, level = 1, maxLevel = 3, accord
   return (
     <Accordion
       type={'multiple'}
-      className={cn('space-y-3 w-full', 'rtl:space-x-reverse ', { 'border rounded-lg': !validateNonEmptyArray(items) })}
+      className={cn('space-y-3 w-full', 'rtl:space-x-reverse ', {
+        'border rounded-lg': !validateNonEmptyArray(items),
+      })}
       {...accordionProperty}
     >
       {displayItems?.map((accItem, index) => (

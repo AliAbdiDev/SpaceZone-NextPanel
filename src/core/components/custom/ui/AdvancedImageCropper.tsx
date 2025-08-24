@@ -3,7 +3,7 @@
 import { cn } from '@/core/utils';
 import { BaseImageCropper as CropperPrimitive } from './BaseImageCropper';
 
-function Cropper({ className, ...props }: React.ComponentProps<typeof CropperPrimitive.Root>) {
+function Cropper({ className: className, ...props }: React.ComponentProps<typeof CropperPrimitive.Root>) {
   return (
     <CropperPrimitive.Root
       data-slot="cropper"
@@ -16,13 +16,16 @@ function Cropper({ className, ...props }: React.ComponentProps<typeof CropperPri
   );
 }
 
-function CropperDescription({ className, ...props }: React.ComponentProps<typeof CropperPrimitive.Description>) {
+function CropperDescription({
+  className: className,
+  ...props
+}: React.ComponentProps<typeof CropperPrimitive.Description>) {
   return (
     <CropperPrimitive.Description data-slot="cropper-description" className={cn('sr-only', className)} {...props} />
   );
 }
 
-function CropperImage({ className, ...props }: React.ComponentProps<typeof CropperPrimitive.Image>) {
+function CropperImage({ className: className, ...props }: React.ComponentProps<typeof CropperPrimitive.Image>) {
   return (
     <CropperPrimitive.Image
       data-slot="cropper-image"
@@ -32,7 +35,7 @@ function CropperImage({ className, ...props }: React.ComponentProps<typeof Cropp
   );
 }
 
-function CropperCropArea({ className, ...props }: React.ComponentProps<typeof CropperPrimitive.CropArea>) {
+function CropperCropArea({ className: className, ...props }: React.ComponentProps<typeof CropperPrimitive.CropArea>) {
   return (
     <CropperPrimitive.CropArea
       data-slot="cropper-crop-area"

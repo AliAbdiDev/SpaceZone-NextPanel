@@ -24,7 +24,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const FileField = ({
-  className,
+  className: className,
   label,
   onChange,
   fieldName,

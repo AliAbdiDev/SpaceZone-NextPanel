@@ -76,7 +76,7 @@ const CropperRoot: React.FC<CropperRootProps> = ({
   maxZoom = 3,
   zoomSensitivity = 0.005,
   keyboardStep = 10,
-  className,
+  className: className,
   style,
   zoom: zoomProp,
   onCropChange,
@@ -728,7 +728,7 @@ const CropperRoot: React.FC<CropperRootProps> = ({
 
 const CropperImage: React.FC<
   Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'draggable' | 'style'>
-> = ({ className, ...restProps }) => {
+> = ({ className: className, ...restProps }) => {
   const { image, getImageProps, getImageWrapperStyle } = useCropperContext();
 
   if (!image) return null;
@@ -742,7 +742,11 @@ const CropperImage: React.FC<
   );
 };
 
-const CropperCropArea: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, style, ...restProps }) => {
+const CropperCropArea: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  className: className,
+  style,
+  ...restProps
+}) => {
   const { cropAreaWidth, cropAreaHeight, getCropAreaProps, getCropAreaStyle } = useCropperContext();
 
   if (cropAreaWidth <= 0 || cropAreaHeight <= 0) return null;
@@ -760,7 +764,11 @@ const CropperCropArea: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ class
   );
 };
 
-const CropperDescription: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className, ...restProps }) => {
+const CropperDescription: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  children,
+  className: className,
+  ...restProps
+}) => {
   const { descriptionId } = useCropperContext();
 
   return (

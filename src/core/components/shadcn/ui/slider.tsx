@@ -6,7 +6,7 @@ import * as SliderPrimitive from '@radix-ui/react-slider';
 import { cn } from '@/core/utils/shadcn/utils';
 
 function Slider({
-  className,
+  className: className,
   defaultValue,
   value,
   min = 0,

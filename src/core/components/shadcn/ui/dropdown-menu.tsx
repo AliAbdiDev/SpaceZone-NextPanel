@@ -19,7 +19,7 @@ function DropdownMenuTrigger({ ...props }: React.ComponentProps<typeof DropdownM
 }
 
 function DropdownMenuContent({
-  className,
+  className: className,
   sideOffset = 4,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
@@ -43,7 +43,7 @@ function DropdownMenuGroup({ ...props }: React.ComponentProps<typeof DropdownMen
 }
 
 function DropdownMenuItem({
-  className,
+  className: className,
   inset,
   variant = 'default',
   ...props
@@ -67,7 +67,7 @@ function DropdownMenuItem({
 }
 
 function DropdownMenuCheckboxItem({
-  className,
+  className: className,
   children,
   checked,
   ...props
@@ -97,7 +97,7 @@ function DropdownMenuRadioGroup({ ...props }: React.ComponentProps<typeof Dropdo
 }
 
 function DropdownMenuRadioItem({
-  className,
+  className: className,
   children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) {
@@ -121,7 +121,7 @@ function DropdownMenuRadioItem({
 }
 
 function DropdownMenuLabel({
-  className,
+  className: className,
   inset,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Label> & {
@@ -137,7 +137,10 @@ function DropdownMenuLabel({
   );
 }
 
-function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
+function DropdownMenuSeparator({
+  className: className,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
   return (
     <DropdownMenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
@@ -147,7 +150,7 @@ function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typ
   );
 }
 
-function DropdownMenuShortcut({ className, ...props }: React.ComponentProps<'span'>) {
+function DropdownMenuShortcut({ className: className, ...props }: React.ComponentProps<'span'>) {
   return (
     <span
       data-slot="dropdown-menu-shortcut"
@@ -162,7 +165,7 @@ function DropdownMenuSub({ ...props }: React.ComponentProps<typeof DropdownMenuP
 }
 
 function DropdownMenuSubTrigger({
-  className,
+  className: className,
   inset,
   children,
   ...props
@@ -186,7 +189,7 @@ function DropdownMenuSubTrigger({
 }
 
 function DropdownMenuSubContent({
-  className,
+  className: className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
   return (

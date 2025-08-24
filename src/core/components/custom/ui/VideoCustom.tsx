@@ -24,7 +24,7 @@ function VideoCustom({
   src,
   sources = [],
   poster,
-  className,
+  className: className,
   autoPlay = false,
   controls = true,
   loop = false,

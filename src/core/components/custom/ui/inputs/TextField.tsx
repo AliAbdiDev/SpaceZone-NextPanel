@@ -19,7 +19,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const TextField = ({
-  className,
+  className: className,
   InputClassName,
   label,
   onChange,

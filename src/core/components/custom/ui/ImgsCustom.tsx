@@ -9,7 +9,7 @@ type ImgsCustomProps = ImageProps & {
 function ImgNormalCustom({
   src = '/placeholder-image.jpg',
   alt = 'تصویر پیش‌فرض',
-  className,
+  className: className,
   ...rest
 }: ImgsCustomProps) {
   if (!src) {
