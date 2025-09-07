@@ -1,23 +1,15 @@
+import dynamic from 'next/dynamic';
 import AuthForm from '@/core/features/auth/components/AuthForm';
+
+const AuthBackground = dynamic(() => import('@/core/features/auth/components/AuthBackGround'));
 
 function Page() {
   return (
-    <div className="min-h-screen w-full bg-[#f9fafb] relative">
-      {/* Diagonal Fade Grid Background - Top Right */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `
-        linear-gradient(to right, #d1d5db 1px, transparent 1px),
-        linear-gradient(to bottom, #d1d5db 1px, transparent 1px)
-      `,
-          backgroundSize: '32px 32px',
-          WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 100% 0%, #000 50%, transparent 90%)',
-          maskImage: 'radial-gradient(ellipse 80% 80% at 100% 0%, #000 50%, transparent 90%)',
-        }}
-      />
-
-      <div className=" flex items-center justify-center min-h-screen relative z-50">
+    <div className="min-h-screen w-full bg-black relative">
+      <div className="absolute inset-0 w-full h-full z-0">
+        <AuthBackground />
+      </div>
+      <div className="absolute inset-0 z-10 w-full max-w-md max-sm:size-full mx-auto flex items-center">
         <AuthForm />
       </div>
     </div>
