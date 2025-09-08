@@ -1,22 +1,20 @@
-import { ButtonLink } from '@/core/components/custom/ui/Buttons';
 import OtpField from '@/core/components/custom/ui/inputs/OtpField';
 import { Card, CardContent } from '@/core/components/shadcn/ui/card';
-import { ArrowLeft } from 'lucide-react';
+import AuthButton from '@/core/features/auth/components/AuthButton';
+import AuthHeader from '@/core/features/auth/components/AuthHeader';
 
 function Page() {
   return (
-    <>
-      <Card>
-        <CardContent>
-          <h1>Enter OTP</h1>
-          <p>Please enter the OTP sent to your email</p>
-          <ButtonLink variant="outline" href="/auth">
-            <ArrowLeft />
-          </ButtonLink>
+    <Card className="w-full relative">
+      <CardContent className="space-y-16">
+        <AuthHeader title="Space Zone" description="کد تایید را وارد کنید" />
+
+        <form className="space-y-8 w-full flex items-center justify-center flex-col">
           <OtpField />
-        </CardContent>
-      </Card>
-    </>
+          <AuthButton label="ورود" />
+        </form>
+      </CardContent>
+    </Card>
   );
 }
 

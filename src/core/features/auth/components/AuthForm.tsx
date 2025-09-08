@@ -1,12 +1,11 @@
 'use client';
 
 import { PasswordField } from '@/core/components/custom/ui/inputs/PasswordField';
-import { TypographyH1 } from '@/core/components/custom/ui/Typography';
-import { Button } from '@/core/components/shadcn/ui/button';
 import { Card, CardContent } from '@/core/components/shadcn/ui/card';
 import { Input } from '@/core/components/shadcn/ui/input';
 import { Label } from '@/core/components/shadcn/ui/label';
-import Link from 'next/link';
+import AuthHeader from './AuthHeader';
+import AuthButton from './AuthButton';
 
 function AuthForm() {
   return (
@@ -15,12 +14,7 @@ function AuthForm() {
         <CardContent className="px-3">
           <form className="px-4">
             <div className="flex flex-col gap-6">
-              <div className="flex flex-col items-center text-center gap-2">
-                <Link href={'/'} tabIndex={-1}>
-                  <TypographyH1 className="text-3xl font-vazir-bold">Space Zone</TypographyH1>
-                </Link>
-                <p className="text-muted-foreground text-balance">وارد حساب کاربری خود شوید</p>
-              </div>
+              <AuthHeader title="Space Zone" description="وارد حساب کاربری خود شوید" />
               <div className="grid gap-3">
                 <Label htmlFor="email">ایمیل</Label>
                 <Input id="email" type="email" placeholder="example@domain.com" required />
@@ -31,11 +25,7 @@ function AuthForm() {
                   رمز عبور خود را فراموش کرده‌اید؟
                 </a>
               </div>
-              <Button type="submit" className="w-full text-xl font-vazir-bold">
-                <Link href={'auth/otp'} className="size-full block min-h-7">
-                  ورود
-                </Link>
-              </Button>
+              <AuthButton label="ورود" />
             </div>
           </form>
         </CardContent>

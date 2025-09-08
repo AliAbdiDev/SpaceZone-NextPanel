@@ -4,7 +4,7 @@ const AuthBackground = dynamic(() => import('@/core/features/auth/components/Aut
 
 function layout({ children }) {
   return (
-    <div className="min-h-screen w-full bg-black relative">
+    <div className="min-h-screen w-full bg-black relative max-sm:bg-gradient-to-r from-black to-gray-900">
       <div className="absolute inset-0 w-full h-full z-0">
         <AuthBackground />
       </div>

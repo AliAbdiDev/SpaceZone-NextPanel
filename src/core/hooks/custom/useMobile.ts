@@ -24,7 +24,7 @@ interface UseIsMobileReturn extends DeviceInfo {
 const MOBILE_REGEX = /android|iphone|ipad|ipod|webos|blackberry|windows phone/i;
 
 /** Maximum screen width for mobile detection (in pixels) */
-const MOBILE_MAX_WIDTH = 768;
+const MOBILE_MAX_WIDTH = 640;
 
 /** Default orientation when not detectable */
 const DEFAULT_ORIENTATION: DeviceInfo['orientation'] = 'unknown';

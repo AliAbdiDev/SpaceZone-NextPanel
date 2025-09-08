@@ -8,19 +8,22 @@ import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 function AuthBackground() {
+  const [isPending, setIsPending] = useState(true);
   const { isMobile } = useMobile();
   const { isResourceLimited } = useResourceLimited();
-  const notShowBackgrond = isMobile || isResourceLimited;
-
   const [disableAnimation, setDisableAnimation] = useState(false);
 
   useEffect(() => {
-    if (!isResourceLimited) return;
+    setIsPending(false);
+  }, []);
+
+  useEffect(() => {
+    if (!isResourceLimited || isPending) return;
     setTimeout(() => {
-      toast(<span>منابع شما محدود است! </span>, {
+      toast(<span>منابع شما محدود است!</span>, {
         description: (
           <div>
-            شما میتوانید از طریق دکمه زیر انیمیشن صفحه را غیر فعال کنید
+            شما می‌توانید از طریق دکمه زیر انیمیشن صفحه را غیرفعال کنید
             <Link href="/" className="underline underline-offset-2 text-secondary-foreground px-1">
               بیشتر بدانید...
             </Link>
@@ -35,7 +38,11 @@ function AuthBackground() {
         },
       });
     }, 0);
-  }, [isResourceLimited]);
+  }, [isResourceLimited, isPending]);
+
+  if (isPending) return null;
+
+  const notShowBackgrond = isMobile || isResourceLimited;
 
   return (
     <>
