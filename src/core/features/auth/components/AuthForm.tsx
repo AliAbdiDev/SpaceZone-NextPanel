@@ -13,10 +13,10 @@ function AuthForm() {
     <>
       <Card className="w-full">
         <CardContent className="px-3">
-          <form className="p-4 ">
+          <form className="px-4">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center gap-2">
-                <Link href={'/'}>
+                <Link href={'/'} tabIndex={-1}>
                   <TypographyH1 className="text-3xl font-vazir-bold">Space Zone</TypographyH1>
                 </Link>
                 <p className="text-muted-foreground text-balance">وارد حساب کاربری خود شوید</p>
@@ -32,7 +32,9 @@ function AuthForm() {
                 </a>
               </div>
               <Button type="submit" className="w-full text-xl font-vazir-bold">
-                ورود
+                <Link href={'auth/otp'} className="size-full block min-h-7">
+                  ورود
+                </Link>
               </Button>
             </div>
           </form>

@@ -16,8 +16,6 @@ interface UseIsResourceLimitedReturn {
   isResourceLimited: boolean;
   /** Battery level as a fraction (0 to 1), or null if not available */
   batteryLevel: number | null;
-  /** Device memory in GB, or null if not available */
-  deviceMemory: number | null;
   /** Number of CPU cores, or null if not available */
   cpuCores: number | null;
   /** Estimated CPU usage as a fraction (0 to 1), or null if not measurable */
@@ -26,11 +24,9 @@ interface UseIsResourceLimitedReturn {
 
 /** Constants for resource checks */
 const MIN_CPU_CORES = 2;
-const MIN_DEVICE_MEMORY = 2;
 const MIN_BATTERY_LEVEL = 0.2;
 const LIMITED_NETWORK_TYPES = ['slow-2g', '2g'];
 const DEFAULT_CPU_CORES = 4;
-const DEFAULT_DEVICE_MEMORY = 4;
 
 const checkCpuLimitations = (
   nav: NavigatorExtended
@@ -63,20 +59,6 @@ const checkCpuLimitations = (
   }
 
   return { isCpuLimited, cpuCores, cpuUsage };
-};
-
-const checkMemoryLimitations = (
-  nav: NavigatorExtended
-): {
-  isMemoryLimited: boolean;
-  deviceMemory: number | null;
-} => {
-  let isMemoryLimited = false;
-  const deviceMemory = 'deviceMemory' in nav ? nav.deviceMemory || DEFAULT_DEVICE_MEMORY : null;
-  if (deviceMemory && deviceMemory <= MIN_DEVICE_MEMORY) {
-    isMemoryLimited = true;
-  }
-  return { isMemoryLimited, deviceMemory };
 };
 
 const checkBatteryLimitations = async (
@@ -131,7 +113,6 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 const useResourceLimited = (): UseIsResourceLimitedReturn => {
   const [isResourceLimited, setIsResourceLimited] = useState<boolean>(false);
   const [batteryLevel, setBatteryLevel] = useState<number | null>(null);
-  const [deviceMemory, setDeviceMemory] = useState<number | null>(null);
   const [cpuCores, setCpuCores] = useState<number | null>(null);
   const [cpuUsage, setCpuUsage] = useState<number | null>(null);
 
@@ -139,15 +120,13 @@ const useResourceLimited = (): UseIsResourceLimitedReturn => {
     const nav = navigator as NavigatorExtended;
 
     const { isCpuLimited, cpuCores, cpuUsage } = checkCpuLimitations(nav);
-    const { isMemoryLimited, deviceMemory } = checkMemoryLimitations(nav);
     const { isBatteryLimited, batteryLevel } = await checkBatteryLimitations(nav);
     const { isNetworkLimited } = checkNetworkLimitations(nav);
 
-    const isLimited = isCpuLimited || isMemoryLimited || isBatteryLimited || isNetworkLimited;
+    const isLimited = isCpuLimited || isBatteryLimited || isNetworkLimited;
 
     setIsResourceLimited((prev) => (prev !== isLimited ? isLimited : prev));
     setBatteryLevel((prev) => (prev !== batteryLevel ? batteryLevel : prev));
-    setDeviceMemory((prev) => (prev !== deviceMemory ? deviceMemory : prev));
     setCpuCores((prev) => (prev !== cpuCores ? cpuCores : prev));
     setCpuUsage((prev) => (prev !== cpuUsage ? cpuUsage : prev));
   }, []);
@@ -166,11 +145,10 @@ const useResourceLimited = (): UseIsResourceLimitedReturn => {
     () => ({
       isResourceLimited,
       batteryLevel,
-      deviceMemory,
       cpuCores,
       cpuUsage,
     }),
-    [isResourceLimited, batteryLevel, deviceMemory, cpuCores, cpuUsage]
+    [isResourceLimited, batteryLevel, cpuCores, cpuUsage]
   );
 };
 

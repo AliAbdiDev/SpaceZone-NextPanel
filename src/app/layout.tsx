@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 import { AuthProvider } from '@/core/services/state/auth';
+import { Toaster } from 'sonner';
 
 const vazirFontMd = localFont({
   src: [
@@ -54,7 +55,10 @@ function layout({ children }) {
         dir="rtl"
         className={`${vazirFontMd?.className} ${vazirFontMd?.variable} ${vazirFontBold?.variable}`}
       >
-        <body>{children}</body>
+        <body>
+          {children}
+          <Toaster />
+        </body>
       </html>
     </AuthProvider>
   );
