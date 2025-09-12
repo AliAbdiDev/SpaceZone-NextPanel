@@ -1,40 +1,112 @@
 'use client';
 
-import { useId } from 'react';
-import { OTPInput, SlotProps } from 'input-otp';
-
+import React, { useId, useState, useEffect } from 'react';
+import { OTPInput, SlotProps, OTPInputProps } from 'input-otp';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/core/utils';
 
-export default function OtpField() {
+type Props = Partial<React.Component<OTPInputProps>> & {
+  error?: string;
+  isNotTrue?: boolean;
+  deleteInterval?: number;
+  value?: string;
+  onChange?: (value: string) => void;
+};
+
+const charVariants = {
+  initial: { opacity: 0, y: -6 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, x: -14 },
+};
+
+interface AnimatedSlotProps extends SlotProps {
+  idx: number;
+  duration?: number; // مدت زمان انیمیشن به ثانیه
+  delay?: number; // تاخیر شروع انیمیشن
+}
+
+const AnimatedSlot: React.FC<AnimatedSlotProps> = React.memo(
+  ({ idx, char, isActive, duration = 0.2, delay = 0 }) => (
+    <div
+      className={cn(
+        'relative size-13 flex items-center justify-center rounded-md border border-input font-medium text-lg',
+        { 'border-ring ring-ring/50 z-10 ring-[3px]': isActive }
+      )}
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <AnimatePresence mode="wait">
+        {char !== null && (
+          <motion.div
+            key={`char-${idx}-${char}`}
+            variants={charVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{
+              duration,
+              delay,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+            className="leading-none select-none"
+          >
+            {char}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  ),
+  (prev, next) => prev.char === next.char && prev.isActive === next.isActive
+);
+
+AnimatedSlot.displayName = 'AnimatedSlot';
+
+export default function OtpField({
+  isNotTrue,
+  error,
+  deleteInterval = 120,
+  value: externalValue,
+  onChange,
+  ...props
+}: Props) {
   const id = useId();
+  const [value, setValue] = useState(externalValue || '');
+
+  useEffect(() => {
+    if (externalValue !== undefined) setValue(externalValue);
+  }, [externalValue]);
+
+  useEffect(() => {
+    if (!isNotTrue || value.length === 0) return;
+    const interval = setInterval(() => {
+      const newVal = value.slice(0, -1);
+      setValue(newVal);
+      onChange?.(newVal);
+    }, deleteInterval);
+    return () => clearInterval(interval);
+  }, [isNotTrue, value, deleteInterval, onChange]);
+
   return (
     <div className="*:not-first:mt-2">
-      {/* <Label htmlFor={id}>OTP input (spaced)</Label> */}
       <OTPInput
         id={id}
-        containerClassName="flex items-center gap-3 has-disabled:opacity-50"
+        value={value}
+        onChange={(v) => {
+          setValue(v);
+          onChange?.(v);
+        }}
         maxLength={4}
+        containerClassName="flex items-center gap-3 has-disabled:opacity-50"
         render={({ slots }) => (
           <div className="flex gap-3">
-            {slots.map((slot, idx) => (
-              <Slot key={idx} {...slot} />
+            {slots?.map((slot, idx) => (
+              <AnimatedSlot key={idx} idx={idx} {...slot} />
             ))}
           </div>
         )}
+        {...props}
       />
-    </div>
-  );
-}
-
-function Slot(props: SlotProps) {
-  return (
-    <div
-      className={cn(
-        'border-input bg-background text-foreground flex size-13 items-center justify-center rounded-md border font-medium shadow-xs transition-[color,box-shadow]',
-        { 'border-ring ring-ring/50 z-10 ring-[3px]': props.isActive }
-      )}
-    >
-      {props.char !== null && <div>{props.char}</div>}
+      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
     </div>
   );
 }
