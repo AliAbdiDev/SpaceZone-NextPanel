@@ -46,7 +46,7 @@ const AnimatedSlot: React.FC<AnimatedSlotProps> = React.memo(
             transition={{
               duration,
               delay,
-              ease: [0, 0.71, 0.2, 1.01],
+              ease: 'easeInOut',
             }}
             className="leading-none select-none"
           >
