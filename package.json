@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "create-pages": "node ./scripts/create-page-script.js cru"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

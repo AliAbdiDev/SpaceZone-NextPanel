@@ -4,6 +4,7 @@ import './globals.css';
 
 import { AuthProvider } from '@/core/services/state/auth';
 import { Toaster } from 'sonner';
+import { ReactQuery } from '@/core/services/providers';
 
 const vazirFontMd = localFont({
   src: [
@@ -50,16 +51,18 @@ const vazirFontBold = localFont({
 function layout({ children }) {
   return (
     <AuthProvider initialToken="" userData={null}>
-      <html
-        lang="fr"
-        dir="rtl"
-        className={`${vazirFontMd?.className} ${vazirFontMd?.variable} ${vazirFontBold?.variable}`}
-      >
-        <body>
-          {children}
-          <Toaster />
-        </body>
-      </html>
+      <ReactQuery>
+        <html
+          lang="fr"
+          dir="rtl"
+          className={`${vazirFontMd?.className} ${vazirFontMd?.variable} ${vazirFontBold?.variable}`}
+        >
+          <body>
+            {children}
+            <Toaster richColors />
+          </body>
+        </html>
+      </ReactQuery>
     </AuthProvider>
   );
 }

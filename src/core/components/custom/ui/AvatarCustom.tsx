@@ -20,21 +20,21 @@ export type AvatarVariantProps = VariantProps<typeof avatarVariants>;
 export function AvatarCustom({
   src,
   className,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  disabledToken = false,
+
+  imageClassName,
   variant = 'default',
   loading,
 }: {
   src: string;
   className?: string;
-  disabledToken?: boolean;
+  imageClassName?: string;
   loading?: 'eager' | 'lazy';
 } & AvatarVariantProps) {
   const avatarSrc = src ?? '/avatar/femaleAdmin.png';
 
   return (
     <Avatar className={cn(avatarVariants({ variant }), className)}>
-      <AvatarImage src={avatarSrc} alt="تصویر" loading={loading ?? 'lazy'} className="bg-cover" />
+      <AvatarImage src={avatarSrc} alt="تصویر" loading={loading ?? 'lazy'} className={cn('bg-cover', imageClassName)} />
     </Avatar>
   );
 }

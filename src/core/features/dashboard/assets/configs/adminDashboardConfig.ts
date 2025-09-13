@@ -10,13 +10,8 @@ import { navMainUser } from "./nav-main/nav-main-user";
 
 // Defining base paths as constants for better maintainability
 export const PATHS = {
-    BASE: '/dashboard/admin',
-    CERTIFICATE: '/certificate-manage',
-    COURSE: '/course-manage',
-    EXERCISE: '/exercise-manage',
+    BASE: '/panel',
     ROLE: '/role-manage',
-    STUDENT: '/student-manage',
-    TEST: '/test-manage',
     USER: '/user-manage',
     SYSTEM: ''
 } as const;

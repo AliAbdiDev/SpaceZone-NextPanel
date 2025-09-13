@@ -16,6 +16,7 @@ import { cn } from '@/core/utils';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { RoleSwitcherItem } from '../../assets/types';
+import { IMAGE_AVATAR_USER_ADIMN } from '@/core/assets/image/avatar';
 
 const RoleImage = ({ src }: { src: string }) => (
   <ImgNormalCustom alt="نقش کاربر" src={src} fill className="object-cover" priority />
@@ -24,8 +25,8 @@ const RoleImage = ({ src }: { src: string }) => (
 const userRolesItem: RoleSwitcherItem[] = [
   {
     name: 'ادمین',
-    image: '/common/avatar/maleAdmin.png',
-    hrefLink: '/dashboard/admin',
+    image: IMAGE_AVATAR_USER_ADIMN,
+    hrefLink: '/panel',
     role: 'admin',
   },
 ];

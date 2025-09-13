@@ -19,6 +19,8 @@ import { SystemMenuItem } from '../../assets/types';
 import { AvatarUserCustom } from '@/core/components/custom/ui/AvatarUserCustom';
 import { rolesDistinction } from '@/core/utils/rolesDistinction';
 import { logoutHandler } from '@/core/features/auth/utils/logout-handler';
+import { AvatarCustom } from '@/core/components/custom/ui/AvatarCustom';
+import { IMAGE_AVATAR_USER_ADIMN } from '@/core/assets/image/avatar';
 
 type NavUserProps = {
   systemMenuItems: SystemMenuItem[];
@@ -33,7 +35,7 @@ type UserInfoProps = {
 };
 
 const NavUserComponent = ({ systemMenuItems }: NavUserProps) => {
-  const { isMobile } = useSidebar();
+  const { isMobile, open } = useSidebar();
 
   const { userData } = useAuthStore((s) => s);
   const userInfoData = userData?.user;
@@ -53,22 +55,22 @@ const NavUserComponent = ({ systemMenuItems }: NavUserProps) => {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <div className="text-sidebar-primary-foreground flex flex-shrink size-12  min-w-8 min-h-8  p-0.5 items-center justify-center rounded-lg relative ">
-                <AvatarUserCustom
-                  className="size-full"
-                  src={user?.avatar}
-                  gender={userInfoData?.gender}
-                  role={
-                    rolesDistinction(userData?.roles?.map((item) => item?.title))?.flags?.isAdmin ? 'admin' : 'user'
-                  }
+              <div className="text-sidebar-primary-foreground flex flex-shrink size-8 items-center justify-center rounded-lg">
+                <AvatarCustom
+                  src={IMAGE_AVATAR_USER_ADIMN || ''}
+                  className="size-full bg-contain"
+                  imageClassName="bg-contain"
                 />
               </div>
-
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.mobileNumber}</span>
-              </div>
-              <ChevronsUpDown className="ml-auto size-4" />
+              {open && (
+                <>
+                  <div className="grid flex-1 text-left text-sm leading-tight">
+                    <span className="truncate font-medium">{user.name}</span>
+                    <span className="truncate text-xs">{user.mobileNumber}</span>
+                  </div>
+                  <ChevronsUpDown className="ml-auto size-4" />
+                </>
+              )}
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 

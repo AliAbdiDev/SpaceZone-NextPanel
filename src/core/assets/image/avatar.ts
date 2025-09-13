@@ -1,0 +1,1 @@
+export const IMAGE_AVATAR_USER_ADIMN = "/common/avatar/user_admin.png"
