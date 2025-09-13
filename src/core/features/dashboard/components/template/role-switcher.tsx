@@ -28,18 +28,6 @@ const userRolesItem: RoleSwitcherItem[] = [
     hrefLink: '/dashboard/admin',
     role: 'admin',
   },
-  {
-    name: 'دانشپذیر',
-    image: '/common/avatar/maleUser.png',
-    hrefLink: '/dashboard/student',
-    role: 'student',
-  },
-  {
-    name: 'استاد',
-    image: '/common/avatar/femaleAdmin.png',
-    hrefLink: '/dashboard/teacher',
-    role: 'teacher',
-  },
 ];
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');

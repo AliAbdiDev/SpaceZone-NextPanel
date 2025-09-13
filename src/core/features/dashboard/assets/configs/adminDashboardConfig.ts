@@ -4,9 +4,9 @@ import {
 } from "lucide-react"
 import { SidebarConfig } from "../types";
 import { createPathBuilder } from "@/core/utils";
-import { navMainCertificate, navMainCourse, navMainExercise, navMainRole, navMainStudent, navMainTest, navMainUser } from "./nav-main";
 import { systemMenuItemsConfigDashboard } from "./systemMenuItemsConfigDashboard";
 import { navSystem } from "./nav-system";
+import { navMainUser } from "./nav-main/nav-main-user";
 
 // Defining base paths as constants for better maintainability
 export const PATHS = {
@@ -39,12 +39,7 @@ export const ADMIN_DASHBOARD_CONFIG: SidebarConfig = {
             icon: LayoutDashboard,
         },
         navMainUser({ pathFn, basePath: PATHS.USER }),
-        navMainStudent({ pathFn, basePath: PATHS.STUDENT }),
-        navMainRole({ pathFn, basePath: PATHS.ROLE }),
-        navMainCourse({ pathFn, basePath: PATHS.COURSE }),
-        navMainExercise({ pathFn, basePath: PATHS.EXERCISE }),
-        navMainTest({ pathFn, basePath: PATHS.TEST }),
-        navMainCertificate({ pathFn, basePath: PATHS.CERTIFICATE }),
+
         navSystem({ pathFn, basePath: PATHS.SYSTEM }),
         {
             title: "بازگشت به وبسایت",

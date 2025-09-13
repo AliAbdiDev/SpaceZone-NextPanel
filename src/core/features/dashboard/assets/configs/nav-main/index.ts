@@ -1,7 +1,0 @@
-export * from './nav-main-certificate'
-export * from './nav-main-course'
-export * from './nav-main-exercise'
-export * from './nav-main-role'
-export * from './nav-main-test'
-export * from './nav-main-user'
-export * from './nav-main-student'

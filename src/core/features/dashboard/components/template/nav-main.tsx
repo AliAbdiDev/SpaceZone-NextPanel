@@ -66,7 +66,7 @@ export function NavMain({ items }: { items: NavItem[] }) {
                             <item.icon size={22} />
                           </Link>
                         )}
-                        <span>{item.title}</span>
+                        <span className="text-nowrap">{item.title}</span>
                         {item?.items && item.items?.length > 0 && (
                           <ChevronLeft className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                         )}
